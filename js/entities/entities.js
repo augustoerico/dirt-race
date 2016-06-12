@@ -11,7 +11,7 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y , settings]);
 
         this.body.gravity = 0
-        this.body.setVelocity(5, 1);
+        this.body.setVelocity(5, 5);
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -62,3 +62,22 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     }
 });
+
+/* Hole Entity */
+game.HoleEntity = me.CollectableEntity.extend({
+
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this._super(me.CollectableEntity, 'init', [x, y, settings]);
+
+    },
+
+    onCollision : function (response, other) {
+        // TODO lose points
+
+        this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+
+        return false
+    }
+
+})
