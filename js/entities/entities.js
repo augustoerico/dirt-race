@@ -36,6 +36,9 @@ game.PlayerEntity = me.Entity.extend({
         } else if(me.input.isKeyPressed('down')) {
             console.log("down"); // TODO remove-me
             this.body.vel.y += this.body.accel.y * me.timer.tick;
+        } else {
+            this.body.vel.x = 0;
+            this.body.vel.y = 0;
         }
 
         // TODO increment velocity
