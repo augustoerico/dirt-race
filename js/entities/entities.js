@@ -9,12 +9,29 @@ game.PlayerEntity = me.Entity.extend({
     init:function (x, y, settings) {
         // call the constructor
         this._super(me.Entity, 'init', [x, y , settings]);
+
+        // default acceleration vector
+        // this.body.setVelocity(3, 15); // TODO try to understand this
+
+        // viewport follows our position
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+
+        // update even when outside of the viewport
+        this.alwaysUpdate = true;
     },
 
     /**
      * update the entity
      */
     update : function (dt) {
+
+        if(me.input.isKeyPressed('left')) {
+            this.body.vel -= this.body.accel.x * me.timer.tick;
+        } else if(me.input.isKeyPressed('rigth')) {
+            this.body.vel += this.body.accel.x * me.timer.tick;
+        }
+
+        // TODO increment velocity
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
