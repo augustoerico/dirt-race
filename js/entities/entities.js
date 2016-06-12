@@ -11,7 +11,7 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y , settings]);
 
         // default acceleration vector
-        // this.body.setVelocity(3, 15); // TODO try to understand this
+        this.body.setVelocity(0, 0); // TODO try to understand this
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
