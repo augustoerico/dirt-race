@@ -10,12 +10,12 @@ game.PlayerEntity = me.Entity.extend({
         // call the constructor
         this._super(me.Entity, 'init', [x, y , settings]);
 
-        // default acceleration vector
-        this.body.setVelocity(0, 0); // TODO try to understand this
+        this.body.gravity = 0
+        // this.body.setVelocity(0, 0);
+
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-
         // update even when outside of the viewport
         this.alwaysUpdate = true;
     },
@@ -26,9 +26,19 @@ game.PlayerEntity = me.Entity.extend({
     update : function (dt) {
 
         if(me.input.isKeyPressed('left')) {
-            this.body.vel -= this.body.accel.x * me.timer.tick;
-        } else if(me.input.isKeyPressed('rigth')) {
-            this.body.vel += this.body.accel.x * me.timer.tick;
+            console.log("left");
+            // this.body.vel.x -= this.body.accel.x * me.timer.tick;
+            this.body.vel.x = -10
+        } else if(me.input.isKeyPressed('right')) {
+            console.log("right");
+            // this.body.vel.x += this.body.accel.x * me.timer.tick;
+            this.body.vel.x = 10
+        } else if(me.input.isKeyPressed('up')) {
+            console.log("up");
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        } else if(me.input.isKeyPressed('down')) {
+            console.log("down");
+            this.body.vel.y += this.body.accel.y * me.timer.tick;
         }
 
         // TODO increment velocity
