@@ -11,8 +11,7 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y , settings]);
 
         this.body.gravity = 0
-        // this.body.setVelocity(0, 0);
-
+        this.body.setVelocity(10, 10);
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -26,18 +25,16 @@ game.PlayerEntity = me.Entity.extend({
     update : function (dt) {
 
         if(me.input.isKeyPressed('left')) {
-            console.log("left");
-            // this.body.vel.x -= this.body.accel.x * me.timer.tick;
-            this.body.vel.x = -10
+            console.log("left"); // TODO remove-me
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
         } else if(me.input.isKeyPressed('right')) {
-            console.log("right");
-            // this.body.vel.x += this.body.accel.x * me.timer.tick;
-            this.body.vel.x = 10
+            console.log("right"); // TODO remove-me
+            this.body.vel.x += this.body.accel.x * me.timer.tick;
         } else if(me.input.isKeyPressed('up')) {
-            console.log("up");
+            console.log("up"); // TODO remove-me
             this.body.vel.y -= this.body.accel.y * me.timer.tick;
         } else if(me.input.isKeyPressed('down')) {
-            console.log("down");
+            console.log("down"); // TODO remove-me
             this.body.vel.y += this.body.accel.y * me.timer.tick;
         }
 
