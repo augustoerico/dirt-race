@@ -14,10 +14,6 @@
   </data>
  </layer>
  <objectgroup name="mainPlayer">
-  <properties>
-   <property name="framewidth" type="int" value="64"/>
-   <property name="image" value="car"/>
-  </properties>
   <object id="10" name="mainPlayer" x="386" y="386" width="64" height="96">
    <properties>
     <property name="framewidth" type="int" value="64"/>
