@@ -10,8 +10,11 @@ game.PlayerEntity = me.Entity.extend({
         // call the constructor
         this._super(me.Entity, 'init', [x, y , settings]);
 
-        this.body.gravity = 0
+        this.body.gravity = 0;
         this.body.setVelocity(5, 5);
+
+        // main player starts with velocity != 0
+        this.body.vel.y = -10;
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -28,13 +31,8 @@ game.PlayerEntity = me.Entity.extend({
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
         } else if(me.input.isKeyPressed('right')) {
             this.body.vel.x += this.body.accel.x * me.timer.tick;
-        } else if(me.input.isKeyPressed('up')) {
-            this.body.vel.y -= this.body.accel.y * me.timer.tick;
-        } else if(me.input.isKeyPressed('down')) {
-            this.body.vel.y += this.body.accel.y * me.timer.tick;
         } else {
             this.body.vel.x = 0;
-            this.body.vel.y = 0;
         }
 
         // TODO increment velocity
