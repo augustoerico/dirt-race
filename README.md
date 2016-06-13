@@ -1,20 +1,13 @@
-melonJS boilerplate
+dirt-race
 -------------------------------------------------------------------------------
 
-features :
-- video autoscaling
-- mobile optimized HTML/CSS
-- swiping disabled on iOS devices
-- debug Panel (if #debug)
-- default icons
-- distribution build
-- standalone build for desktop operating systems
+A simple race-like game using MelonJS + Tiled Map Editor. This code is most based on [platform tutorial](http://melonjs.github.io/tutorial-platformer/#intro) @ Melon JS Official site.
 
 ## To run distribution
 
 To build, be sure you have [node](http://nodejs.org) installed. Clone the project:
 
-    git clone https://github.com/melonjs/boilerplate.git
+    git clone https://github.com/augustoerico/dirt-race
 
 Then in the cloned directory, simply run:
 
