@@ -74,10 +74,61 @@ game.HoleEntity = me.CollectableEntity.extend({
 
     onCollision : function (response, other) {
         // TODO lose points
-
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
-        return false
+        return false;
     }
 
-})
+});
+
+/* Adversary Entity */
+game.AdversaryEntity = me.Entity.extend({
+
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this._super(me.Entity, 'init', [x, y, settings]);
+    },
+
+    update : function (dt) {
+
+        /*
+        if (this.alive) {
+          if (this.walkLeft && this.pos.x <= this.startX) {
+            this.walkLeft = false;
+          }
+          else if (!this.walkLeft && this.pos.x >= this.endX) {
+            this.walkLeft = true;
+          }
+
+          // make it walk
+          this.renderable.flipX(this.walkLeft);
+          this.body.vel.x += (this.walkLeft) ? -this.body.accel.x * me.timer.tick : this.body.accel.x * me.timer.tick;
+        }
+        else {
+          this.body.vel.x = 0;
+        }
+        */
+
+    this.body.vel.x = 0;
+    this.body.vel.y = 0;
+
+    // update the body movement
+    this.body.update(dt);
+
+    // handle collisions against other shapes
+    me.collision.check(this);
+
+    // return true if we moved or if the renderable was updated
+    return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
+  },
+
+
+    onCollision : function (response, other) {
+        // TODO lose the game
+
+        // Make all other objects solid
+        return true;
+    }
+
+    // TODO on update, move forward
+});
