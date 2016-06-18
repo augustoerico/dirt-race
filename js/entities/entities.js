@@ -12,8 +12,9 @@ game.PlayerEntity = me.Entity.extend({
 
         this.body.gravity = 0;
 
-        this.body.setVelocity(5, 5);
-        this.body.vel.y = -3;
+        this.body.setVelocity(10, 10);
+        this.body.vel.y = -5;
+        this.body.vel.x = 1;
 
         // viewport follows our position
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
